@@ -11,12 +11,14 @@
 - 싱글 스레드 요청 이벤트를 주도적으로 처리
 
 
+
 # 자료형
 1. [String형](#string형)
 2. [List형](#list형)
 3. [Hash형](#hash형)
 4. [Set형](#set형)
 5. [Sorted-Set형](#sorted-set형)
+
 
 
 
@@ -78,6 +80,35 @@
   - 리스트에서 지정한 범위의 인덱스에 있는 값 가져오기[O(S+N)] -> LRANGE key start stop
   - 리스트에서 지정한 요소를 지정한 수만큼 삭제하기[O(N+M)] -> LREM key count element
   - 리스트에서 지정한 인덱스에 있는 값을 지정한 값으로 저장하기[O(N)] -> LSET key index element
+
+
+## Hash형
+- 특징
+  - 순서 없이 필드와 값이 여러 쌍으로 매핑된 자료구조
+  - 키에 사용자별로 매핑하여 다룰 수 있음
+
+- 사용 예시
+  - 객체 표현(각 사용자를 객체로 간주하여 사용자별로 이름, 나이 등 정보를 저장하는 경우)
+
+- 명령어
+  - 해시에서 지정한 필드 삭제하기[O(N)] -> HDEL key field
+  - 해시에 지정한 필드가 존재하는지 확인하기[O(1)] -> HEXISTS key field
+  - 해시에 지정한 필드값 가져오기[O(1)] -> HGET key field
+  - 해시에서 모든 필드 및 저장된 값 쌍 가져오기[O(N)] -> HGETALL key
+  - 해시에 포함된 필드 수 가져오기[O(1)] -> HLEN key
+  - 해시에서 여러 필드와 값의 쌍 저장하기[O(N)] -> HMSET key field value
+  - 해시에 지정한 필드값 저장하기[O(N)] -> HSET key field value
+  - 해시의 모든 필드값 가져오기[O(N)] -> HVALS key
+  - 반복 처리하여 해시의 필드와 그에 연결된 값의 쌍 목록을 가져오기[O(1)] -> HSCAN key cursor [MATCH pattern] [COUNT count]
+  - 해시에 지정한 필드값을 지정한 정수만큼 증가[O(1)] -> HINCRBY key field increment
+  - 해시에 필드가 존재하지 않는 것을 확인한 후 값 저장하기[O(1)] -> HSETNX key field value
+
+
+
+
+
+
+
 
 
 
