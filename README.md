@@ -52,6 +52,45 @@
   - TTL을 설정한 키값 가져오기[O(1)] -> GETEX key
   - 키 값을 가져온 후 그 키를 삭제하기[O(1)] -> GETDEL key
   - 여러 개의 키가 존재하지 않는 것을 확인하고 값을 저장하기[O(N)] -> MSETNX key value
+ 
+
+## List형
+- 특징
+  - 문자열 컬렉션
+  - 삽입 순서를 유지
+  - 스택(stack), 큐(queue) 등으로 사용하기 좋음
+
+- 사용 예시
+  - 스택
+  - 큐
+  - SNS 최근 게시물
+  - 로그
+
+- 명령어
+  - 리스트 왼쪽부터 값을 가져오고 삭제하기[O(N)] -> LPOP key [count]
+  - 리스트 왼쪽부터 값을 삽입하기[O(N)] -> LPUSH key element [element...]
+  - 리스트 오른쪽부터 값을 가져오고 삭제하기[O(N)] -> RPOP key [count]
+  - 리스트 오른쪽부터 값을 삽입하기[O(N)] -> RPUSH key element [element...]
+  - 리스트의 왼쪽 혹은 오른쪽부터 여러 개의 값을 가져오고 삭제하기[O(N+M)] -> LMPOP numkeys key [key...]
+  - 리스트에서 지정한 인덱스에 값을 조회하기[O(N)] -> LINDEX key index
+  - 리스트에서 지정한 인덱스에 값을 삽입하기[O(N)] -> LINSERT key BEFORE|AFTER pivot element
+  - 리스트의 길이 가져오기[O(1)] -> LLEN key
+  - 리스트에서 지정한 범위의 인덱스에 있는 값 가져오기[O(S+N)] -> LRANGE key start stop
+  - 리스트에서 지정한 요소를 지정한 수만큼 삭제하기[O(N+M)] -> LREM key count element
+  - 리스트에서 지정한 인덱스에 있는 값을 지정한 값으로 저장하기[O(N)] -> LSET key index element
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
 
