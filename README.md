@@ -133,6 +133,45 @@
   -  집합에 지정한 여러 멤버가 포함되어 있는지 판단하기[O(N)] -> SMISMEMBER key member [member ...]
 
 
+## Sorted-Set형
+- 특징
+  - 순서가 있는 고유한 문자열 집합
+  - Set형과 유사하지만 모든 요소에는 점수라는 부동소수점을 가짐
+    - 요소는 항상 점수를 통해 정렬
+  - Set형과는 다른 특정 범위의 요소를 추출 가능
+
+- 사용 예시
+  - 랭킹
+  - 활동 피드
+
+- 명령어
+  - 순서 집합에 하나 이상의 점수와 멤버 쌍 추가하기[O(logN)] -> ZADD key [NX|XX] [GT|LT] [CH] [INCR] score member [score member ...]
+  - 순서 집합에 포함된 멤버 수 가져오기[O(1)] -> ZCARD key
+  - 순서 집합에 지정한 멤버의 점수 순위를 오름차순으로 가져오기[O(logN)] -> ZRANK key member
+  - 순서 집합에 지정한 멤버의 점수 순위를 높은 순서대로 가져오기[O(logN)] -> ZREVRANK key member
+  - 순서 집합에 지정한 멤버의 점수 범위에 있는 멤버 목록을 오름차순으로 가져오기[O(logN+M)] -> ZRANGE key min max [BYSOCRE|BYLEX] [REV] [LIMIT offset count] [WITHSCORES]
+  - 순서 집합에 지정한 멤버 삭제하기[O(M*logN)] -> ZREM key member [member ...]
+  - 순서 집합에서 지정한 점수 범위에 있는 멤버의 수 가져오기[O(logN)] -> ZCOUNT key min max
+  - 순서 집합에서 점수가 최대인 멤버를 삭제하고 가져오기[O(M*logN)] -> ZPOPMAX key [count]
+  - 순서 집합에서 지정한 멤버 점수 가져오기[O(1)] -> ZSCORE key member
+  - 순서 집합에서 반복 처리하여 멤버 목록 가져오기[O(N)] -> ZSCAN key cursor [MATCH pattern] [COUNT count]
+  - 순서 집합 간 교집합 가져오기[O(L+(N-k)*logN)] -> ZINTER numkeys key [key ...] [WITHSCORES]
+  - 순서 집합 간 차집합 가져오기[O(L+(N-K)*logN)] -> ZDIFF numkeys key [key ...] [WITHSCORES]
+  - 순서 집합 간 합집합 가져오기[O(N) + O(M*log(M))] -> ZUNION numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM | MIN | MAX] [WITHSCORES]
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
