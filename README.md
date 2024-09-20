@@ -104,6 +104,43 @@
   - 해시에 필드가 존재하지 않는 것을 확인한 후 값 저장하기[O(1)] -> HSETNX key field value
 
 
+## Set형
+-특징
+  - 순서 없이 고유한 문자열 집합
+  - 대상 요소 포함 여부 확인 가능
+  - 집합 간 합집합, 차집합 등 작업을 통해 공통 요소 또는 차이점 추출 가능
+
+- 사용 예시
+  - 멤버십
+  - 태그 관리
+  - 특정 기간의 고유한 사용자 수 조사
+      - HyperLogLog라는 기능은 다소 오차가 있지만 메모리를 절약하면서 고유 사용자 계산 가능
+
+- 명령어
+  -  집합에 하나 이상의 멤버 추가하기[O(1)] -> SADD key member [member ...]
+  -  집합에 포함된 멤버의 수 가져오기[O(1)] -> SCARD key
+  -  집합에 지정한 멤버가 포함되었는지 판단하기[O(1)] -> SISMEMBER key member
+  -  집합에 포함된 모든 멤버 가져오기[O(N)] -> SMEMBERS key
+  -  집합에 포함된 멤버를 무작위로 가져오기[O(1)] -> SPOP key [count]
+  -  집합에서 하나 이상 멤버를 삭제하기[O(1)] -> SREM key member [member ...]
+  -  반복 처리하여 멤버 목록 가져오기[O(1)] -> SSCAN key member [member ...]
+  -  집합 간 차집합 가져오기[O(N)] -> SDIFF key [key ...]
+  -  집합 간 차집합을 가져오고 저장하기[O(N)] -> SDIFFSTORE destination key [key]
+  -  집합 간 교집합 가져오기[O(N*M)] -> SINTER key [key ...]
+  -  집합 간 교집합을 가져오고 저장하기[O(N*M)] -> SINTERSTORE destination key [key ...]
+  -  집합 간 교집합에 포함된 멤버 수 가져오기[O(N*M)] -> SINTERCARD numkeys key [key ...] [LIMIT limit]
+  -  집합 간 합집합 가져오기[O(N)] -> SUNION key [key ...]
+  -  집합에 지정한 여러 멤버가 포함되어 있는지 판단하기[O(N)] -> SMISMEMBER key member [member ...]
+
+
+
+
+
+
+
+
+
+
 
 
 
